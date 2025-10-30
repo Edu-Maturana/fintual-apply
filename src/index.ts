@@ -1,7 +1,7 @@
 import Stock from "./stock/stock";
 import Portfolio from "./portfolio/portfolio";
 
-// Voy a simularlo con lo mismo que tengo en Fintual
+// Voy a simularlo con lo mismo que tengo en Fintual🫶
 const myStocks = [
   {
     symbol: "VOO",

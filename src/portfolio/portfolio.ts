@@ -8,7 +8,7 @@ interface Allocation {
 export default class Portfolio {
   private static readonly PERCENT_SCALE = 100;
   private static readonly AMOUNT_DECIMALS = 2;
-  private static readonly MIN_SHARES_EPSILON = 0.0001;
+  private static readonly MIN_SHARES_EPSILON = 0.0001; // Como 10 lucas en BTC;
   private static readonly CURRENCY_SYMBOL = "$";
 
   constructor(
@@ -109,11 +109,11 @@ export default class Portfolio {
     sharesDelta: number,
     difference: number
   ): string {
-    const action = sharesDelta > 0 ? "Comprar" : "Vender";
+    const action = sharesDelta > 0 ? "🤑 Comprar" : "💸 Vender";
     const shares = Math.abs(sharesDelta);
     const amount = this.roundAmount(difference);
 
-    return `${action} ${shares} shares de ${symbol}, o bien $${amount}`;
+    return `${action} ${shares} unidades de ${symbol}\n(que equivalen a ${Portfolio.CURRENCY_SYMBOL}${amount})\n`;
   }
 
   private isEffectivelyZero(value: number, threshold: number): boolean {
