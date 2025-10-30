@@ -34,18 +34,6 @@ export default class Portfolio {
     );
   }
 
-  private buildStatusLine(
-    allocation: Allocation,
-    amountsBySymbol: Map<string, number>
-  ): string {
-    const amount = amountsBySymbol.get(allocation.symbol) ?? 0;
-    const percentageInteger = this.roundPercentageToInteger(
-      allocation.percentage
-    );
-
-    return this.formatStatusLine(allocation.symbol, percentageInteger, amount);
-  }
-
   private getCurrentPortfolioAllocation(): Allocation[] {
     const totalValue = this.getCurrentPortfolioValue();
 
@@ -65,6 +53,18 @@ export default class Portfolio {
 
   private getCurrentPortfolioValue(): number {
     return this.stocks.reduce((acc, stock) => acc + stock.getMarketValue(), 0);
+  }
+
+  private buildStatusLine(
+    allocation: Allocation,
+    amountsBySymbol: Map<string, number>
+  ): string {
+    const amount = amountsBySymbol.get(allocation.symbol) ?? 0;
+    const percentageInteger = this.roundPercentageToInteger(
+      allocation.percentage
+    );
+
+    return this.formatStatusLine(allocation.symbol, percentageInteger, amount);
   }
 
   public getRebalancePlan(): string {
